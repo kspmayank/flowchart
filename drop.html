@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dropdown Type Structure</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>	
+</head>
+<body>
+
+<style type="text/css">
+	li{
+		list-style: none;
+	}
+
+	.add-item{
+		font-size: 12px;
+		width: 12px;
+		height: 12px;
+	}
+</style>
+
+	<li><span><a href="javascript:void(0)">Outer List 1</a></span>
+		<ul>
+			<li><span><a href="javascript:void(0)">Item 1</a></span>
+				<ul>
+					<li><span><a href="javascript:void(0)">Inner Item 1</a></span>
+						<ul>
+							<li><span><a href="javascript:void(0)">Inner Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+							<li><span><a href="javascript:void(0)">Inner Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+							<li><span><a href="javascript:void(0)">Inner Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+							<li><span><a href="javascript:void(0)">Inner Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+							<li><span><a href="javascript:void(0)">Inner Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+							<li><span><a href="javascript:void(0)">Inner Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+						</ul>
+					</li>
+					<li><span><a href="javascript:void(0)">Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+					<li><span><a href="javascript:void(0)">Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+					<li><span><a href="javascript:void(0)">Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+					<li><span><a href="javascript:void(0)">Inner Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+				</ul>
+			</li>
+			<li><span><a href="javascript:void(0)">Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+			<li><span><a href="javascript:void(0)">Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+			<li><span><a href="javascript:void(0)">Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+			<li><span><a href="javascript:void(0)">Item 1</a></span><ul><li class="add-item-li"><img src="plus.png" class="add-item" />Add new item</li></ul>
+		</ul>
+	</li>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("li").find("ul").hide();
+
+		$(".add-item-li").on("click", function(){
+            var liname = prompt("Enter item Name :");
+            var li_elem = "<li><span><a href='javascript:void(0)'>"+liname+"</a></span><ul><li class='add-item-li'><img src='plus.png' class='add-item' />Add new item</li></ul>";
+            $(this).before(li_elem);
+            $(this).before().on("click",function(event){
+				// console.log($(this));
+				$(this).before().find("ul").first().toggle();
+				// $(this).find("ul").find("ul").hide();
+				event.stopPropagation();
+			});
+		});
+
+		$("li").on("click",function(event){
+			console.log($(this));
+			$(this).find("ul").first().toggle();
+			// $(this).find("ul").find("ul").hide();
+			event.stopPropagation();
+		});
+
+
+	});
+</script>
+
+
+</body>
+</html>
